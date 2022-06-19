@@ -36,12 +36,11 @@ class persona(models.Model):
 class Entrada(models.Model):
     persona = models.ForeignKey('persona', on_delete=models.CASCADE, null=True)
     fechaIngreso = models.DateField()
-    TiempoPermanencia = models.CharField(max_length=10, default="")
+    TiempoPermanencia = models.CharField(max_length=10, default="",blank=True)
     paisOrigen = models.CharField(max_length=10, default="")
-    passDui = models.CharField(max_length=10, default="")
 
 class Salida(models.Model):
     persona = models.ForeignKey('persona', on_delete=models.CASCADE, null=True)
     fechaSalida = models.DateField()
-    TiempoPermanencia = models.CharField(max_length=10, default="")
+    TiempoPermanencia = models.CharField(max_length=10, default="",blank=True)
     paisDestino = models.CharField(max_length=10, default="")

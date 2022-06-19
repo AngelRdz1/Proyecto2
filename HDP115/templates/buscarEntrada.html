@@ -12,14 +12,14 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="form-panel panel panel-default">
-                <form class="d-flex" role="search" method="GET">
-                    
-                    <input class="form-control me-2" type="search" name="buscar" value="" autocomplete='off' placeholder="Buscar..." aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
-                  </form>
+                
                 <div class="panel-heading">
                     <h3 class="panel-title">Buscar Personas</h3>
                 </div>
+                <form class="d-flex" role="search" method="GET">
+                    <input class="form-control me-2" type="search" name="buscar" value="" autocomplete='off' placeholder="Buscar..." aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
                 <div class="panel-body">
                     
                     <form id = "formulario" role="form" action="." method="POST">
@@ -29,7 +29,6 @@
                                 <div class="col-md-6">
                                     <table class="table">
                                         <thead>
-                                            <th>IDpersona</th>
                                             <th>Documento</th>
                                             <th>Nombre</th>
                                             <th>Apellido</th>
@@ -40,7 +39,7 @@
                                             {% for p in personas%}
                                             <tr>
                                                 {% if p.estado == 1 %}
-                                                    <td>{{p.idPersona}}</td>
+                                                    
                                                     {% if p.pasaporte == Null %}
                                                         <td>{{p.dui}}</td>
                                                     {% endif %}
@@ -50,8 +49,8 @@
                                                     <td>{{p.nombre}}</td>
                                                     <td>{{p.apellido}}</td>
                                                     
-                                                    <td><a class="btn btn-secondary"href="{% url 'registrarEntradaPersona' %}">Registrar Entrada </a></td>
-                                                    {% endif %}
+                                                    <td><a class="btn btn-secondary"href="{% url 'registrarEntradaPersona' p.idPersona %}">Registrar Entrada </a></td>
+                                                {% endif %}
                                             </tr>
                                             {% endfor %}
                                         </tbody>
