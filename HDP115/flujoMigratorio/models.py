@@ -8,12 +8,15 @@ tipo_Documento=[
     (1, 'DUI'),
     (2, 'Pasaporte')
 ]
+estado_actual=[
+    (1, 'Fuera del Paìs'),
+    (2, 'En el Pais')
+]
 
 class persona(models.Model):
-    extrajero = models.ForeignKey('Extranjero', on_delete=models.CASCADE, null=True)
-    ciudadano = models.ForeignKey('Ciudadano', on_delete=models.CASCADE, null=True)
-    pasaporte = models.CharField(max_length=9, unique=True, default="", null=True)
-    dui = models.CharField(max_length=10, unique=True, default="", null=True)
+    idPersona = models.AutoField(primary_key=True)
+    pasaporte = models.CharField(max_length=9, unique=True, default="", null=True,blank=True)
+    dui = models.CharField(max_length=10, unique=True, default="", null=True,blank=True)
     nombre = models.CharField(max_length= 50, default="")
     apellido = models.CharField(max_length=50, default="")
     tipoDocumento = models.IntegerField(
@@ -24,14 +27,21 @@ class persona(models.Model):
         blank=True,
         choices=nacional_extranjero
     ) 
-    fechaSalida = models.DateField()
+    estado = models.IntegerField(
+        blank=True,
+        choices=estado_actual
+    )
+    
+
+class Entrada(models.Model):
+    persona = models.ForeignKey('persona', on_delete=models.CASCADE, null=True)
     fechaIngreso = models.DateField()
     TiempoPermanencia = models.CharField(max_length=10, default="")
+    paisOrigen = models.CharField(max_length=10, default="")
+    passDui = models.CharField(max_length=10, default="")
 
-
-
-class Extranjero(models.Model):
-    idExtranjero = models.AutoField(primary_key=True)
-
-class Ciudadano(models.Model):
-    idCiudadano = models.AutoField(primary_key=True)
+class Salida(models.Model):
+    persona = models.ForeignKey('persona', on_delete=models.CASCADE, null=True)
+    fechaSalida = models.DateField()
+    TiempoPermanencia = models.CharField(max_length=10, default="")
+    paisDestino = models.CharField(max_length=10, default="")

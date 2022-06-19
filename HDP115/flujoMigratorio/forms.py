@@ -1,12 +1,17 @@
+from dataclasses import field
+from pyexpat import model
 from django import forms
-from .models import persona
+from .models import Entrada, persona
+
+class DateInput(forms.DateInput): 
+    input_type = 'date'
 
 #Formulario para Crear Personas
 class PersonaForm(forms.ModelForm):
    
     class Meta:
         model = persona
-        fields = ('nombre','apellido')
+        fields = ('nombre','apellido','tipoDocumento','pasaporte','dui','nacionalidad','estado')
         label = {
             
             'nombre':('Nombre de la persona'),
@@ -19,5 +24,14 @@ class PersonaForm(forms.ModelForm):
             'apellido':('Campo obligatorio'),
             
         }
-class PersonasSistema(forms.Form):
-    fields = {'pasaporte'}
+
+class EntradaForms(forms.ModelForm):
+    class Meta:
+        model = Entrada
+        fields = ('fechaIngreso','TiempoPermanencia','paisOrigen')
+        
+        widgets = { 'fechaIngreso': DateInput(), }
+
+class BuscarId(forms.Form):   
+    buscar = forms.CharField(label='buscarID')
+    
