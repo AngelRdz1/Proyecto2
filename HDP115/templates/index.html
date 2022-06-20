@@ -34,10 +34,14 @@
                 <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Gestionar Personas</a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="{% url 'registrarPersona' %}">Registrar Persona</a></li>
-                </ul>              
+                  <li><a class="dropdown-item" href="{% url 'indexPersonas' %}">Consultar Personas</a></li>
+                </ul>           
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{% url 'buscarPersonaEntrada' %}">Registrar Entrada</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'buscarPersonaSalida' %}">Registrar Salida</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link"></a>

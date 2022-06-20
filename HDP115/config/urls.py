@@ -25,7 +25,11 @@ urlpatterns = [
     path('accounts/login/', LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', LogoutView.as_view(template_name='logout.html'), name='logout'),
     path('registrarPersona/',registrarPersona.as_view(), name='registrarPersona'),
-    path('buscarPersonaEntrada/',indexBuscarPersona.as_view(),name='buscarPersonaEntrada'),
-    path('registrarEntradaPersona/<str:idp>/',entradaPersona.as_view(),name='registrarEntradaPersona')
+    path('buscarPersonaEntrada/',indexEntrarPersona.as_view(),name='buscarPersonaEntrada'),
+    path('registrarEntradaPersona/<str:idp>/',entradaPersona.as_view(),name='registrarEntradaPersona'),
+    path('indexPersonas/',indexPersonas.as_view(),name='indexPersonas'),
+    path('agregarAlarma/<str:idp>/',agregarAlarma.as_view(),name='agregarAlarma'),
+    path('buscarPersonaSalida/',indexSalirPersona.as_view(),name='buscarPersonaSalida'),
+    path('registrarSalidaPersona/<str:idp>/',salidaPersona.as_view(),name='registrarSalidaPersona')
 ]
 

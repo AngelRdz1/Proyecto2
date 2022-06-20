@@ -38,19 +38,15 @@
 
                                             {% for p in personas%}
                                             <tr>
-                                                {% if p.estado == 1 %}
-                                                    
-                                                    {% if p.pasaporte == Null %}
-                                                        <td>{{p.dui}}</td>
-                                                    {% endif %}
-                                                    {% if p.dui == Null %}
-                                                        <td>{{p.pasaporte}}</td>
-                                                    {% endif %}
-                                                    <td>{{p.nombre}}</td>
-                                                    <td>{{p.apellido}}</td>
-                                                    
-                                                    <td><a class="btn btn-secondary"href="{% url 'registrarEntradaPersona' p.idPersona %}">Registrar Entrada </a></td>
+                                                {% if p.pasaporte == Null %}
+                                                    <td>{{p.dui}}</td>
                                                 {% endif %}
+                                                {% if p.dui == Null %}
+                                                    <td>{{p.pasaporte}}</td>
+                                                {% endif %}
+                                                <td>{{p.nombre}}</td>
+                                                <td>{{p.apellido}}</td> 
+                                                <td><a class="btn btn-secondary"href="{% url 'agregarAlarma' p.idPersona %}">Agregar Alerta</a></td> 
                                             </tr>
                                             {% endfor %}
                                         </tbody>

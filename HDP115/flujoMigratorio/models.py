@@ -12,7 +12,10 @@ estado_actual=[
     (1, 'Fuera del Paìs'),
     (2, 'En el Pais')
 ]
-
+tipo_alarma = [
+    (1, 'Alarma 1'),
+    (2, 'Alarma 2')
+]
 class persona(models.Model):
     idPersona = models.AutoField(primary_key=True)
     pasaporte = models.CharField(max_length=9, unique=True, default="", null=True,blank=True)
@@ -44,3 +47,11 @@ class Salida(models.Model):
     fechaSalida = models.DateField()
     TiempoPermanencia = models.CharField(max_length=10, default="",blank=True)
     paisDestino = models.CharField(max_length=10, default="")
+
+class Alarma(models.Model):
+    persona = models.ForeignKey('persona', on_delete=models.CASCADE, null=True)
+    tipoAlerta = models.IntegerField(
+        blank=True,
+        choices=tipo_alarma
+    )
+    descripcion = models.TextField(max_length=200,blank = True, default="")

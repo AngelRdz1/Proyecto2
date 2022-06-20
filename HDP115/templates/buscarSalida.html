@@ -38,7 +38,7 @@
 
                                             {% for p in personas%}
                                             <tr>
-                                                {% if p.estado == 1 %}
+                                                {% if p.estado == 2 %}
                                                     
                                                     {% if p.pasaporte == Null %}
                                                         <td>{{p.dui}}</td>
@@ -49,7 +49,7 @@
                                                     <td>{{p.nombre}}</td>
                                                     <td>{{p.apellido}}</td>
                                                     
-                                                    <td><a class="btn btn-secondary"href="{% url 'registrarEntradaPersona' p.idPersona %}">Registrar Entrada </a></td>
+                                                    <td><a class="btn btn-secondary"href="{% url 'registrarSalidaPersona' p.idPersona %}">Registrar Salida</a></td>
                                                 {% endif %}
                                             </tr>
                                             {% endfor %}
